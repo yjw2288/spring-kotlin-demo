@@ -1,0 +1,22 @@
+= API Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:sectlinks:
+:snippets: buid/generated-snippets
+
+== 소개
+
+API 문서
+
+== 샘플 API
+
+=== request
+include::{snippets}/sample-list/curl-request.adoc[]
+
+=== response
+include::{snippets}/sample-list/http-response.adoc[]
+
+=== response Fields
+include::{snippets}/sample-list/response-fields.adoc[]
