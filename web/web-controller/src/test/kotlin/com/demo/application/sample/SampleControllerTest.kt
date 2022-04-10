@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 import org.springframework.web.filter.CharacterEncodingFilter
 
-@ExtendWith(RestDocumentationExtension::class, SpringExtension::class)
+@ExtendWith(RestDocumentationExtension::class)
 internal class SampleControllerTest {
     lateinit var mockMvc: MockMvc
 
