@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class SampleWebService(
-    private val sampleService: SampleService
+    private val sampleService: SampleService,
 ) {
     fun findAll(): List<SampleDto> {
         return sampleService.findAll()

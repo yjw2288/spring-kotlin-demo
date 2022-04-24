@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Transactional
 @Service
-class SampleService(
+class SampleService internal constructor(
     private val sampleRepository: SampleRepository
 ) {
     fun findAll(): List<Sample> = sampleRepository.findAll()
