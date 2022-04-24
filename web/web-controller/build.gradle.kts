@@ -10,9 +10,19 @@ tasks.getByName("asciidoctor") {
     dependsOn("test")
 }
 
-dependencies {
-    val springMockkVersion: String by project
+tasks.getByName("jar") {
+    enabled = false
+}
 
+tasks.getByName("bootJar") {
+    enabled = true
+}
+
+tasks.getByName("bootRun") {
+    enabled = true
+}
+
+dependencies {
     implementation(project(":web:web-service"))
     implementation("org.springframework.boot:spring-boot-starter-web")
 

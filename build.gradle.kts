@@ -1,12 +1,13 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
+import org.springframework.boot.gradle.tasks.run.BootRun
 
 val kotlinVersion: String by project
 
 plugins {
-	id("org.springframework.boot")
+	id("org.springframework.boot") apply false
 	id("io.spring.dependency-management")
-	id("org.asciidoctor.jvm.convert")
-	id("org.jmailen.kotlinter")
+	id("org.asciidoctor.jvm.convert") apply false
+	id("org.jmailen.kotlinter") apply false
 
 	kotlin("jvm")
 	kotlin("kapt")
@@ -25,6 +26,9 @@ allprojects {
 		maven {
 			url = uri("https://repo.spring.io/milestone")
 		}
+		flatDir {
+			dirs("libs")
+		}
 	}
 }
 
@@ -40,9 +44,11 @@ subprojects {
 
 	val jar: Jar by tasks
 	val bootJar: BootJar by tasks
+	val bootRun: BootRun by tasks
 
 	jar.enabled = true
 	bootJar.enabled = false
+	bootRun.enabled = false
 
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 		kotlinOptions {
