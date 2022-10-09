@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController
 class IndexController {
     @GetMapping
     fun index(): String {
-        return "index"
+        return "spring-kotlin-demo : index"
     }
 }
