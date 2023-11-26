@@ -15,8 +15,9 @@ tasks.getByName("jar") {
 }
 
 tasks.getByName("bootJar") {
-    enabled = true
+    enabled = false
 }
+
 
 tasks.getByName("bootRun") {
     enabled = true

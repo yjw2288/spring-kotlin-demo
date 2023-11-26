@@ -9,6 +9,7 @@ import io.restassured.module.mockmvc.RestAssuredMockMvc
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.slf4j.LoggerFactory
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document
@@ -24,6 +25,14 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 import org.springframework.web.filter.CharacterEncodingFilter
 
+data class MyList<T>(
+    private val list: List<T>
+) : List<T> by list {
+    fun addTwo(t: T): MyList<T> {
+        return MyList(list + t + t)
+    }
+}
+
 @ExtendWith(RestDocumentationExtension::class)
 internal class SampleControllerTest {
     lateinit var mockMvc: MockMvc
@@ -33,6 +42,8 @@ internal class SampleControllerTest {
     private lateinit var sampleController: SampleController
 
     lateinit var restDocumentation: RestDocumentationContextProvider
+
+    private val log = LoggerFactory.getLogger(SampleControllerTest::class.java)
 
     @BeforeEach
     fun before(restDocumentation: RestDocumentationContextProvider) {
@@ -46,6 +57,13 @@ internal class SampleControllerTest {
             .alwaysDo<StandaloneMockMvcBuilder>(MockMvcResultHandlers.print())
             .apply<StandaloneMockMvcBuilder>(documentationConfiguration(restDocumentation))
             .build()
+    }
+
+    @Test
+    fun test() {
+        val list = MyList(listOf("1", "2", "3"))
+        log.info("list : {}", list)
+        log.info("list get : {}", list.get(1))
     }
 
     @Test

@@ -18,7 +18,7 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 allprojects {
 	repositories {
@@ -44,16 +44,14 @@ subprojects {
 
 	val jar: Jar by tasks
 	val bootJar: BootJar by tasks
-	val bootRun: BootRun by tasks
 
 	jar.enabled = true
 	bootJar.enabled = false
-	bootRun.enabled = false
 
 	tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 		kotlinOptions {
 			freeCompilerArgs = listOf("-Xjsr305=strict")
-			jvmTarget = "17"
+			jvmTarget = "21"
 		}
 	}
 

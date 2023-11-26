@@ -10,5 +10,6 @@ class SampleService internal constructor(
 ) {
     fun findAll(): List<Sample> = sampleRepository.findAll()
     fun save(sample: Sample): Sample = sampleRepository.save(sample)
+
     fun findAllByName(name: String): List<Sample> = sampleRepository.findAll(QSample.sample.name.eq(name)).toList()
 }
