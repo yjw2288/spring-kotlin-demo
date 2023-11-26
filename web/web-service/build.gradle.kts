@@ -1,3 +1,3 @@
 dependencies {
-    implementation(project(":domain:sample"))
+    implementation(project(":db:db-core"))
 }

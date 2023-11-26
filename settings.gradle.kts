@@ -3,8 +3,6 @@ rootProject.name = "spring-kotlin-demo"
 include (
 	"db:db-core",
 
-	"domain:sample",
-
 	"web:web-service",
 	"web:web-controller",
 )
